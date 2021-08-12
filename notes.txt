@@ -1,0 +1,1 @@
+для работы с email'ом: mandrill

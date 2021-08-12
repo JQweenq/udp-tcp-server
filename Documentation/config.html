@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+	<title>Server Documentation</title>
+	<link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+	<div class="wrapper">
+		<header>
+			<h1>Servers/config.json</h1>
+		</header>
+		<div class="column">
+			<ul class="list__links">
+				<li>
+					<a target="_blank" href="tcp.html">Tcp</a>
+				</li>
+				<li>
+					<a target="_blank" href="udp.html">Udp</a>
+				</li>
+				<li>
+					<a target="_blank" href="config.html">Config</a>
+				</li>
+			</ul>
+		</div>
+		<div class="display">
+			<h2>Файл: config.json</h2>
+			<ul class="list__items">
+				<li>
+					<a href="#abote">
+						О config.json
+					</a>
+				</li>
+				<li>
+					<a href="#standart">
+						Стандарт файла
+					</a>
+				</li>
+			</ul>
+			<h3 id="abote">О config.json</h3>
+			<span>Этот файл содержит в себе конфигурацию Udp и Tcp серверов. При вызове методов create() и recreate() файл config.json открывается каждый раз.</span>
+			<h3 id="standart">Стандарт файла</h3>
+			<p class="block__code">{<br />
+				"address": "localhost", // адрес сервера<br />
+				"tcpPort": 6240, // порт для Udp сервера<br />
+				"udpPort": 4062 // порт для Tcp сервера<br />
+			}</p>
+		</div>
+</body>
+
+</html>

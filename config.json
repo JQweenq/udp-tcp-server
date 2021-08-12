@@ -1,0 +1,9 @@
+{
+	"api": null,
+	"host": "localhost",
+	"tcpPort": 6240,
+	"udpPort": 4062,
+	"limit": 50,
+	"timeout": 1000,
+	"access": "access.json"
+}

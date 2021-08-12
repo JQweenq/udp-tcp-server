@@ -1,0 +1,35 @@
+{
+	"isAllowed": [
+		{
+			"nickname": "Josty",
+			"family": "IPv4",
+			"ip": "127.0.0.1",
+			"status": "admin"
+		},
+		{
+			"nickname": "appimage",
+			"family": "IPv4",
+			"ip": "127.0.0.1",
+			"status": "moderator"
+		},
+		{
+			"nickname": "cmd",
+			"family": "IPv4",
+			"ip": "127.0.0.1",
+			"status": "player"
+		}
+	],
+
+	"isDenied": [
+		{
+			"nickname": "Steve",
+			"family": "IPv4",
+			"ip": "0.0.0.0"
+		},
+		{
+			"nickname": "Alex",
+			"family": "IPv4",
+			"ip": "0.0.0.0"
+		}
+	]
+}

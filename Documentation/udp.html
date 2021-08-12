@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+	<title>Server Documentation</title>
+	<link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+	<div class="wrapper">
+		<header>
+			<h1>Servers/udp.js</h1>
+		</header>
+		<div class="column">
+			<ul class="list__links">
+				<li>
+					<a target="_blank" href="tcp.html">Tcp</a>
+				</li>
+				<li>
+					<a target="_blank" href="udp.html">Udp</a>
+				</li>
+				<li>
+					<a target="_blank" href="config.html">Config</a>
+				</li>
+			</ul>
+		</div>
+		<div class="display">
+			<h2>Класс: Udp</h2>
+			<ul class="list__items">
+				<li>
+					<a href="#newServer">
+						new Tcp()
+					</a>
+				</li>
+				<li>
+					<a href="#create">
+						Метод: create([callback])
+					</a>
+				</li>
+			</ul>
+			<h3 id="newServer">new Tcp()</h3>
+			<span>Пример Tcp сервера
+				<p class="block__code">
+					const Tcp = require('./Servers/tcp.js').Tcp;<br /><br />
+					tcpServer = new Tcp();<br />
+					tcpServer.addServerEventListening(() => console.log('listening'))<br />
+					tcpServer.create();
+				</p>
+			</span>
+			<h3 id="create">create()</h3>
+			<span>Запускает сервер с данными из <a href="config.html">config.js</a></span>
+		</div>
+</body>
+
+</html>

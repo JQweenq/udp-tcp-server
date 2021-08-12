@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+	<title>Server Documentation</title>
+	<link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+	<div class="wrapper">
+		<header>
+			<h1>Servers/servers.js</h1>
+		</header>
+		<div class="column">
+			<ul class="list__links">
+				<li>
+					<a target="_blank" href="tcp.html">Tcp</a>
+				</li>
+				<li>
+					<a target="_blank" href="udp.html">Udp</a>
+				</li>
+				<li>
+					<a target="_blank" href="config.html">Config</a>
+				</li>
+			</ul>
+		</div>
+		<div class="display">
+			<h2>Класс: Tcp</h2>
+			<ul class="list__items">
+				<li>
+					<a href="#newServer">
+						new Tcp([configPath][, GBU])
+					</a>
+				</li>
+				<li>
+					<a href="#createServers">
+						Метод: createServers([callback])
+					</a>
+				</li>
+				<li>
+					<a href="#createTcp">
+						Метод: createTcp([address][, port])
+					</a>
+				</li>
+				<li>
+					<a href="#createUdp">
+						Метод: createUdp([address][, port])
+					</a>
+				</li>
+				<li>
+					<a href="#getObjectBannedUsers">
+						Метод: getObjectBannedUsers(array)
+					</a>
+				</li>
+				<li>
+					<a href="#getArrayBannedUsers">
+						Метод: getArrayBannedUsers(array)
+					</a>
+				</li>
+			</ul>
+			<h3 id="newServer">new Servers([configPath][, GBU])</h3>
+			<ul>
+				<li>
+					<span><span class="unparameter">configPath</span> - параметр принимающий строку с путем к файлу config.json. Поумолчанию 'config.json'.</span>
+				</li>
+				<li>
+					<span><span class="unparameter">GBU</span> - параметр принимающий строку 'array' или 'object'. Тип данных, который будет возвращаться свойству accessIsDenied (см. <a href="#getArrayBannedUsers">getArrayBannedUsers()</a> и <a href="#getObjectBannedUsers">getObjectBannedUsers()</a>). Поумолчанию null - не создается.</span>
+				</li>
+			</ul>
+			<span>В констукторе класса происходит следующее:</span>
+			<ol type="1">
+				<li>
+					<span>Создается tcp сервер -> <a href="https://nodejs.org/dist/latest-v14.x/docs/api/net.html#net_class_net_server" target="_blank">net.Server</a>.</span> 
+				</li>
+				<li>
+					<span>Создается udp сервер -> <a href="https://nodejs.org/dist/latest-v14.x/docs/api/dgram.html#dgram_class_dgram_socket" target="_blank">dgram.Socket</a>.</span>
+				</li>
+				<li>
+					<span>Создается свойство config со значениями файла config.json.</span>
+				</li>
+				<li>
+					<span>Создается свойство access со значениями файла access.json путём парсинга json.</span>
+				</li>
+				<li>
+					<span>Создается (или не создается. Зависит от параметра <span class="unparameter">GBU</span>)  свойство accessIsDenied со значениями <a href="#getObjectBannedUsers">getObjectBannedUsers()</a> или <a href="#getArrayBannedUsers">getArrayBannedUsers()</a>.</span>
+				</li>
+			</ol>
+			<span>Пример Tcp сервера
+				<pre class="block__code">
+const Servers = require('./Servers/tcp.js').Servers;
+const fs = require('fs');
+const server = new Servers();
+
+server.createServers();
+server.tcp.on('connection', (socket) => { // при подключсении к серверу
+
+	socket.on('connect', () => { // при подключении к сокету
+		socket.setTimeout(server.config.timeout);
+		socket.setEncoding('utf8');
+	});
+
+	socket.on('ready', () => { // при готовности сокета
+		console.log(socket.address());
+		if (socket.address in listAccessIsDenied.values()) {
+			socket.end('Вы забанены xD');
+		}
+	});
+
+	socket.on('data', (data) => { // при получении данных
+		console.log(data);
+	});
+
+	socket.on('end', () => { // при разрыве соединения клиентом
+		console.log('Клиент разорвал соединение');
+	});
+
+	socket.on('close', (hadError) => { // при закрытии соединения
+		if (hadError){
+			console.log('Соединение закрыто из-за ошибки');
+		}
+		else {
+			console.log('Соединение закрыто');
+		}
+	})
+});
+				</pre>
+			</span>
+
+			<h3 id="createServers">createServers()</h3>
+			<span>Servers.tcp и Servers.udp привязываются к ip и портам.</span>
+
+			<h3 id="createTcp">createTcp([address][, port])</h3>
+			<ul>
+				<li>
+					<span><span class="unparameter">address</span> - параметр принимающий строку с ip адресом сервера. Поумолчанию
+						"localhost".</span>
+				</li>
+				<li>
+					<span><span class="unparameter">port</span> - параметр принимающий число с портом сервера. Поумолчанию null -
+						выбирается случайно.</span>
+				</li>
+			</ul>
+			<span>Привязывает Servers.tcp к <span class="unparameter">address</span> и <span class="unparameter">port</span></span>
+
+			<h3 id="createUdp">createUdp([address][, port])</h3>
+			<ul>
+				<li>
+					<span><span class="unparameter">address</span> - параметр принимающий строку с ip адресом сервера. Поумолчанию "localhost".</span>
+				</li>
+				<li>
+					<span><span class="unparameter">port</span> - параметр принимающий число с портом сервера. Поумолчанию null - выбирается случайно</span>
+				</li>
+			</ul>
+			<span>Привязывает Servers.udp к <span class="unparameter">address</span> и <span class="unparameter">port</span></span>
+
+			<h3 id="getObjectBannedUsers">getObjectBannedUsers(array)</h3>
+			<ul>
+				<li>
+					<span><span class="parameter">array</span> - принимает массив объектов пользователей. Обычно используется Servers.access.isDenied.</span>
+				</li>
+			</ul>
+			<span>Возвращает объект с ключами - никнеймами и значениями - ip.</span>
+			<h4>Пример:</h4>
+<pre class="block__code">
+{
+	Josty: '127.0.0.1',
+	Qweenq: '0.0.0.0'
+}
+</pre>
+
+			<h3 id="getArrayBannedUsers">getArrayBannedUsers(array)</h3>
+			<ul>
+				<li>
+					<span><span class="parameter">array</span> - принимает массив объектов пользователей. Обычно используется
+						Servers.access.isDenied.</span>
+				</li>
+			</ul>
+			<span>Bозвращает массив объектов с ключом - никнеймом и значением - ip.</span>
+			<h4>Пример:</h4>
+
+<pre class="block__code">
+[
+	{Josty: '127.0.0.1'},
+	{Qweenq: '0.0.0.0'}
+]
+</pre>
+		</div>
+</body>
+
+</html>

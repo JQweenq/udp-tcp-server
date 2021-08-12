@@ -1,0 +1,131 @@
+/* Обнуление */
+::before, ::after {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	box-sizing: border-box;
+}
+a{
+	text-decoration: none;
+	color: #6584FE;
+}
+a:hover{
+	color: #46d;
+}
+ul, ol, li {
+	padding: 0;
+	list-style: none;
+}
+img{
+	vertical-align: none;
+}
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	font-weight: inherit;
+	font-size: inherit;
+}
+h1 {
+	font-size: 36px;
+}
+h2 {
+	font-size: 32px;
+}
+h3 {
+	font-size: 28px;
+	background-color: #053
+}
+h4 {
+	font-size: 24px;
+}
+html, body {
+	margin: 0;
+	height: 100%;
+	line-height: 1.5;
+	font-size: 16px;
+	background-color: #317;
+	color: #ccc;
+	font-family: 'Source Code Pro', 'SF UI Display', 'Segoe UI Black';
+}
+header {
+	margin-top: -55px;
+	position: fixed;
+	text-align: center;
+	width: 100%;
+	vertical-align: middle;
+	background-color: #317;
+}
+/* bg & fg */
+::-webkit-scrollbar {
+	width: 15px;
+}
+::-webkit-scrollbar-track {
+	background-color: transparent;	
+}
+::-webkit-scrollbar-thumb {
+	background-color: #FE6584;
+	border-radius: 10px;
+	border: 5px solid #151544;
+}
+.wrapper {
+	width: 100%;
+	/* height: 100%; */
+	padding-top: 55px;
+}
+.column{
+	margin-top: -60px;
+	position: fixed;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	direction: rtl;
+	height: 100%;
+	width: 15%;
+}
+.display {
+	margin-left: 15%;
+	padding: 10px;
+	background-color: #151544;
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+	border-top: 5px solid #FE6584;
+	border-left: 5px solid #FE6584;
+	border-bottom: 5px solid #FE6584;
+}
+
+.list__links li {
+	height: 30px;
+	border: 5px;
+}
+.list__links li a:hover{
+	background-color: #216;
+}
+.list__links li a{
+	margin-top: 10px;
+	padding-top: 10px;
+	display: block;
+	text-align: center;
+	height: 30px;
+	left: 50%;
+	color: #FE6584;
+}
+.list__items{
+	padding-left: 30px;
+}
+/* Для текста */
+.block__code {
+	color: #eee;
+	background-color: #323FA6;
+	padding: 10px;
+	border-radius: 15px;
+	border: 2px solid #fe7;
+	font-family: 'Fira Code';
+	font-size: 14px;
+	tab-size: 4;
+}
+.parameter{
+	color: #000;
+	background: #fe7;
+}
+.unparameter{
+	color: #000;
+	background: #555;
+}

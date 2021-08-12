@@ -1,0 +1,20 @@
+{
+  "name": "udp-tcp-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "start.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Josty-Qweenq/udp-tcp-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Josty-Qweenq/udp-tcp-server/issues"
+  },
+  "homepage": "https://github.com/Josty-Qweenq/udp-tcp-server#readme"
+}
